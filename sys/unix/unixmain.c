@@ -1047,6 +1047,14 @@ sys_random_seed(void)
     unsigned long seed = 0L;
     unsigned long pid = (unsigned long) getpid();
     boolean no_seed = TRUE;
+
+    const char *fix_seed = getenv("NHSEED");
+
+    if(NULL != fix_seed)
+    {
+        return strtoul(fix_seed, NULL, 10);
+    }
+
 #ifdef DEV_RANDOM
     FILE *fptr;
 

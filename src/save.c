@@ -73,6 +73,33 @@ dosave(void)
     return ECMD_OK;
 }
 
+static int is_master = 1;
+
+int doloadstate(void)
+{
+    if(is_master)
+    {
+        pline("You have no save states.");
+        return ECMD_OK;
+    }
+    exit(0);
+}
+
+int dosavestate(void)
+{
+    pid_t cpid;
+    if(0 == fork())
+    {
+        pline("State successfully saved (child: %d).", (unsigned int)getpid());
+        is_master = 0;
+        return ECMD_OK;
+    }
+    cpid = wait(NULL);
+    doredraw();
+    pline("State successfully restored (from child: %d).", (unsigned int)cpid);
+    return ECMD_OK;
+}
+
 /* returns 1 if save successful */
 int
 dosave0(void)

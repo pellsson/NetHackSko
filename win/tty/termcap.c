@@ -74,6 +74,8 @@ static char tty_standout_on[16], tty_standout_off[16];
 void
 tty_startup(int *wid, int *hgt)
 {
+    CO = 80;
+    LI = 25;
 #ifdef TERMLIB
     register const char *term;
     register char *tptr;

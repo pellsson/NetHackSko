@@ -2385,6 +2385,8 @@ extern void free_CapMons(void);
 /* ### save.c ### */
 
 extern int dosave(void);
+extern int dosavestate(void);
+extern int doloadstate(void);
 extern int dosave0(void);
 extern boolean tricked_fileremoved(NHFILE *, char *);
 #ifdef INSURANCE
