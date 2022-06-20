@@ -344,6 +344,7 @@ install: rootcheck $(GAME) recover $(VARDAT) spec_levs
 			chmod $(VARFILEPERM) perm record logfile xlogfile livelog )
 	true; $(POSTINSTALL)
 # and a reminder
+	cp sysconf $(HACKDIR)/sysconf
 	@echo You may also want to reinstall the man pages via the doc Makefile.
 
 
